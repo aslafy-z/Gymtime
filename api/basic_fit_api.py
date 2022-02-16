@@ -67,14 +67,14 @@ def get_member_information(session):
 
     return response.json()
 
-def get_open_reservations_count(session):
+def get_open_reservations(session):
     """ Get open reservations for the member """
     response = session.get("https://my.basic-fit.com/door-policy/get-open-reservation")
 
     if response.status_code != 200:
         raise Exception("Can't fetch reservations for member")
 
-    return len(response.json()["data"])
+    return response.json()["data"]
 
 def get_available_times_for_members_favourite_club(session, user, date):
     """ Get all the available times for the club """
